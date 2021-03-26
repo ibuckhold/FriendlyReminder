@@ -30,6 +30,7 @@ router.post(
     }),
 );
 
+// Log out
 router.delete(
     '/',
     (_req, res) => {
