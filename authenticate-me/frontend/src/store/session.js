@@ -43,8 +43,8 @@ const sessionReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case SET_USER:
-            newState = Object.assign({}, state);
-            newState.user = action.payload;
+            newState = Object.assign({}, state, { user: action.payload });
+            // newState.user = action.payload;
             return newState;
         case REMOVE_USER:
             newState = Object.assign({}, state);
@@ -76,5 +76,6 @@ export const restoreUser = () => async dispatch => {
     dispatch(setUser(data.user));
     return response;
 };
+
 
 export default sessionReducer;
