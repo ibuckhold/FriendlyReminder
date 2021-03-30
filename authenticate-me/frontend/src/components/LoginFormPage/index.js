@@ -3,7 +3,6 @@ import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './LoginForm.css';
-import { csrfFetch } from '../../store/csrf';
 
 
 function LoginFormPage() {
@@ -37,33 +36,32 @@ function LoginFormPage() {
 
     return (
         <div className='logInDiv'>
-            <form onSubmit={handleSubmit}>
+            <div className='loginTitle' align='center' >Login Form</div>
+            <form className='loginForm' onSubmit={handleSubmit} >
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
                 <div className='usernameInput'>
-                    <label>
-                        Username or Email
-                        <input
-                            type="text"
-                            value={credential}
-                            onChange={(e) => setCredential(e.target.value)}
-                            required
-                        />
-                    </label>
+                    <input
+                        placeholder='Username or Email'
+                        className='username'
+                        type="text"
+                        value={credential}
+                        onChange={(e) => setCredential(e.target.value)}
+                        required
+                    />
                 </div>
                 <div className='passwordInput'>
-                    <label>
-                        Password
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                    </label>
+                    <input
+                        placeholder='Password'
+                        className='password'
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
                 </div>
-                <button type="submit">Log In</button>
+                <button className='loginBtn' type="submit">Log In</button>
             </form>
             <form onSubmit={demoSubmit}>
                 <button type='submit' className='demo-btn'> Demo User </button>
