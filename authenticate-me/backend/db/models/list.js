@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
     List.hasMany(models.Task, {
       foreignKey: "listId"
     })
+    List.belongsTo(models.User, {
+      foreignKey: "userId"
+    })
   };
   return List;
 };
