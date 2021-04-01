@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
@@ -8,7 +8,10 @@ import './Navigation.css';
 function Navigation({ isLoaded }) {
 
     function handleLogin() {
-        <Redirect to="/login" />
+        window.location = '/login';
+    }
+    function handleSignup() {
+        window.location = '/signup';
     }
 
     const sessionUser = useSelector(state => state.session.user);
@@ -21,8 +24,8 @@ function Navigation({ isLoaded }) {
     } else {
         sessionLinks = (
             <div className='buttons'>
-                <button onClick={handleLogin} className='btn' to="/login">Log In</button>
-                <button className='btn' to="/signup">Sign Up</button>
+                <button onClick={handleLogin} className='btn'>Log In</button>
+                <button onClick={handleSignup} className='btn'>Sign Up</button>
             </div>
         );
     }
@@ -30,8 +33,10 @@ function Navigation({ isLoaded }) {
     return (
         <div className='nav'>
             <ul>
-                <i exact to="/" className='logo fas fa-hands-helping'></i>
-                <span className='logoName'>Friendly Reminder</span>
+                <a href="/">
+                    <div className='logo fas fa-hands-helping' />
+                    <span className='logoName'>Friendly Reminder</span>
+                </a>
                 {isLoaded && sessionLinks}
             </ul>
         </div>
