@@ -27,9 +27,22 @@ export const getTasks = () => async dispatch => {
     dispatch(setTasks(tasks))
 }
 
+export const createTasks = (task) => async dispatch => {
+    const response = await csrfFetch('/api/tasks', {
+        method: 'POST',
+        body: JSON.stringify(task)
+    });
+    if (!response.ok) {
+        throw response
+    }
+    const myTask = await response.json();
+    dispatch(addTask(myTask))
+}
+
 const initialState = {};
 //REDUCER
 const taskReducer = (taskSlice = initialState, action) => {
+    const newState = { ...taskSlice };
     switch (action.type) {
         case SET_TASK:
             const tasks = action.payload;
@@ -39,7 +52,8 @@ const taskReducer = (taskSlice = initialState, action) => {
             }
             return newTasks;
         case ADD_TASK:
-            return taskSlice
+            newState[action.payload.id] = action.payload
+            return newState;
         default:
             return taskSlice;
     }

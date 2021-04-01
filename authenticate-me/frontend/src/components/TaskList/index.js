@@ -14,9 +14,8 @@ function TaskList() {
     const renderTasks = () => {
         return tasks.map(task => {
             return (
-                <div>
-                    <h1>Here are your tasks:</h1>
-                    <li key={task.id}> {task.body}</li>
+                <div key={task.id}>
+                    <li>{task.body}</li>
                 </div>
             )
         })
@@ -29,6 +28,7 @@ function TaskList() {
 
     return (
         <ul>
+            <h1>Here are your tasks:</h1>
             {renderTasks()}
         </ul>
     )

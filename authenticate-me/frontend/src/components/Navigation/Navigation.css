@@ -1,0 +1,19 @@
+.nav {
+    height: 70px;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    border-bottom: 3px solid rgb(31, 169, 255);
+    /* background-color: rgb(197, 233, 255); */
+}
+
+.profileDiv {
+    float: right;
+    position: relative;
+    margin-right: 50px;
+    margin-top: 5px;
+}
+
+.profile {
+    font-size: 45px;
+    color: whitesmoke;
+}
