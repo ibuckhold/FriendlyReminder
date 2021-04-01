@@ -18,8 +18,8 @@ export const addTask = (task) => {
 }
 
 //THUNKS
-export const getTasks = () => async dispatch => {
-    const response = await csrfFetch('/api/tasks');
+export const getTasks = (id) => async dispatch => {
+    const response = await csrfFetch(`/api/lists/${id}/tasks`);
     if (!response.ok) {
         throw response
     }

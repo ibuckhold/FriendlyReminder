@@ -1,10 +1,16 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
+
 function Navigation({ isLoaded }) {
+
+    function handleLogin() {
+        <Redirect to="/login" />
+    }
+
     const sessionUser = useSelector(state => state.session.user);
 
     let sessionLinks;
@@ -14,20 +20,19 @@ function Navigation({ isLoaded }) {
         );
     } else {
         sessionLinks = (
-            <>
-                <NavLink to="/login">Log In</NavLink>
-                <NavLink to="/signup">Sign Up</NavLink>
-            </>
+            <div className='buttons'>
+                <button onClick={handleLogin} className='btn' to="/login">Log In</button>
+                <button className='btn' to="/signup">Sign Up</button>
+            </div>
         );
     }
 
     return (
         <div className='nav'>
             <ul>
-                <li>
-                    <NavLink exact to="/" className='logo fas fa-hands-helping'></NavLink>
-                    {isLoaded && sessionLinks}
-                </li>
+                <i exact to="/" className='logo fas fa-hands-helping'></i>
+                <span className='logoName'>Friendly Reminder</span>
+                {isLoaded && sessionLinks}
             </ul>
         </div>
     );

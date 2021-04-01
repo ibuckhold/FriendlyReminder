@@ -2,7 +2,7 @@
     height: 70px;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
-    border-bottom: 3px solid rgb(31, 169, 255);
+    border-bottom: 5px solid rgb(31, 169, 255);
     /* background-color: rgb(197, 233, 255); */
 }
 
@@ -16,4 +16,43 @@
 .profile {
     font-size: 45px;
     color: whitesmoke;
+}
+
+.logo {
+    font-size: 45px;
+    color: whitesmoke;
+
+}
+
+.logoName {
+    font-size: 22px;
+    margin-left: 6px;
+    color: whitesmoke;
+    font-weight: 600;
+    font-family: "Comic Sans MS", "Comic Sans", "cursive";
+}
+
+.buttons {
+    float: right;
+    margin-right: 20px;
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    size: 50px;
+    cursor: pointer;
+    border-radius: 5em;
+    color: #fff;
+    background: linear-gradient(to right, #9C27B0, #E040FB);
+    border: 0;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 35%;
+    margin-bottom: 5px;
+    font-size: 13px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 }

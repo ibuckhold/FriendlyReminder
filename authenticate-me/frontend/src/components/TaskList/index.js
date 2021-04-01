@@ -1,15 +1,15 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { getTasks } from '../../store/task';
+import { useSelector } from 'react-redux';
+// import { useEffect } from 'react';
+// import { getTasks } from '../../store/task';
 
 function TaskList() {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const tasks = useSelector(state => Object.values(state.tasks));
     console.log(tasks);
 
-    useEffect(() => {
-        dispatch(getTasks());
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(getTasks());
+    // }, [dispatch]);
 
     const renderTasks = () => {
         return tasks.map(task => {
