@@ -56,3 +56,19 @@
     font-size: 13px;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 }
+
+.listCreate {
+    font-size: 40px;
+    color: whitesmoke;
+    position: absolute;
+    top: 4%;
+    left: 45%;
+}
+
+.taskCreate {
+    font-size: 40px;
+    color: whitesmoke;
+    position: absolute;
+    top: 4%;
+    left: 45%;
+}

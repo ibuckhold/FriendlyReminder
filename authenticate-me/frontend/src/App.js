@@ -31,7 +31,7 @@ function App() {
           <Route exact path="/tasks">
             <TaskList />
           </Route>
-          <Route exact path="/lists">
+          <Route exact path="/me">
             <ListOfTasks />
           </Route>
           <Route exact path="/lists/create">

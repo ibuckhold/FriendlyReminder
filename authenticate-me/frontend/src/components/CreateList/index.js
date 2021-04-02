@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/list";
 
 function CreateList() {
@@ -8,13 +8,16 @@ function CreateList() {
   const [userId, setUserId] = useState("");
   const [title, setTitle] = useState("");
   const [errors, setErrors] = useState([]);
-
+  const history = useHistory();
   const currUserId = useSelector(state => state.session.user.id)
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     return dispatch(sessionActions.makeList({ userId: currUserId, title }))
+      .then(() => {
+        history.push('/me');
+      })
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);

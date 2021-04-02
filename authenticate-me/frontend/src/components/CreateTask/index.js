@@ -20,9 +20,9 @@ function CreateTask() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    return dispatch(sessionActions.createTasks({ listId, body }))
+    return dispatch(sessionActions.createTasks({ listId: selectedList, body }))
       .then(() => {
-        history.push('/');
+        history.push('/me');
       })
       .catch(async (res) => {
         const data = await res.json();
