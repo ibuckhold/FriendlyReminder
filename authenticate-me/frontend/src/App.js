@@ -7,6 +7,8 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import TaskList from "./components/TaskList";
 import ListOfTasks from "./components/UserLists";
+import CreateList from "./components/CreateList";
+import CreateTask from "./components/CreateTask";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,11 +28,17 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/tasks">
+          <Route exact path="/tasks">
             <TaskList />
           </Route>
-          <Route path="/lists">
+          <Route exact path="/lists">
             <ListOfTasks />
+          </Route>
+          <Route exact path="/lists/create">
+            <CreateList />
+          </Route>
+          <Route exact path="/tasks/create">
+            <CreateTask />
           </Route>
         </Switch>
       )}

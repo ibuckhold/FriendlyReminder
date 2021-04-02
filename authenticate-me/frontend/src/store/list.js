@@ -28,6 +28,8 @@ export const getList = () => async dispatch => {
     dispatch(setList(list));
 }
 
+
+
 const initalState = {};
 
 // REDUCER
@@ -46,5 +48,23 @@ const listReducer = (listsSlice = initalState, action) => {
             return listsSlice
     }
 }
+
+export const makeList = (list) => async (dispatch) => {
+    const { userId, title } = list;
+    const response = await csrfFetch("/api/lists", {
+        method: "POST",
+        body: JSON.stringify({
+            userId,
+            title
+        }),
+    });
+    if (!response.ok) {
+        throw response
+    }
+    const data = await response.json();
+    dispatch(getList(data.list));
+    return response;
+};
+
 
 export default listReducer;

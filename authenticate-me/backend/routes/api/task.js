@@ -12,7 +12,7 @@ router.get('/', asyncHandler(async (req, res) => {
     res.json(tasks);
 }))
 
-router.post('/', /*csrfProtection,*/ asyncHandler(async (req, res) => {
+router.post('/', asyncHandler(async (req, res) => {
     const { listId, body } = req.body;
     const task = await Task.create({
         listId,

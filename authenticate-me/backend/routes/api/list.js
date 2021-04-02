@@ -28,7 +28,7 @@ router.post('/', asyncHandler(async (req, res) => {
         userId,
         title
     })
-    res.json(list);
+    return res.json(list);
 }))
 
 module.exports = router;

@@ -28,15 +28,20 @@ export const getTasks = (id) => async dispatch => {
 }
 
 export const createTasks = (task) => async dispatch => {
+    const { listId, body } = task
     const response = await csrfFetch('/api/tasks', {
         method: 'POST',
-        body: JSON.stringify(task)
+        body: JSON.stringify({
+            listId,
+            body
+        })
     });
     if (!response.ok) {
         throw response
     }
     const myTask = await response.json();
-    dispatch(addTask(myTask))
+    dispatch(addTask(myTask));
+    return response;
 }
 
 const initialState = {};
