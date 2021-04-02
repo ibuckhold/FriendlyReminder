@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/list";
 
 function CreateList() {
   const dispatch = useDispatch();
-  // const newList = useSelector((state) => state.lists);
   const [userId, setUserId] = useState("");
   const [title, setTitle] = useState("");
   const [errors, setErrors] = useState([]);
 
+  const currUserId = useSelector(state => state.session.user.id)
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    return dispatch(sessionActions.makeList({ userId, title }))
+    return dispatch(sessionActions.makeList({ userId: currUserId, title }))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
@@ -34,16 +36,6 @@ function CreateList() {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <input
-            placeholder='UserId'
-            className='userid'
-            type='integer'
-            value={userId}
-            onChange={(e) => setUserId(e.target.value)}
             required
           />
         </div>
